@@ -51,20 +51,20 @@ int main()
     ifstream ifs;
     ofstream ofs;
 
-    ofs.open("palin.inp");
-    ifs.open("palin.out");
+    ifs.open("palin.inp");
+    ofs.open("palin.out");
 
-    if(ofs.is_open()){
+    if(ifs.is_open()){
         string line;
-        ofs << line;
+        ifs >> line;
         int n = atoi(line.c_str());
         for(int i = 0; i < n; i++)
         {
-            ofs << line;
-            ifs >> chkpalin(line) >> "\n";
+            ifs >> line;
+            ofs << chkpalin(line) << "\n";
         }
-        ifs.close();
         ofs.close();
+        ifs.close();
     }
     return 0;
 }
