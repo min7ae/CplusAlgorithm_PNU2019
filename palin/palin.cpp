@@ -1,11 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
-int chkpalin(string str){
+string chkpalin(string str){
     int ret = 1;
     // center를 chk
     int center = str.length() / 2;
@@ -44,26 +43,28 @@ int chkpalin(string str){
             }
         }
     }
-    return ret;
+    return to_string(ret);
 }
 
 int main()
 {
-    string fName = "palin.inp";
-    string oName = "palin.out";
+    ifstream ifs;
+    ofstream ofs;
 
-    ifstream openFile(fName);
-    ofstream writeFile(oName);
-    if(openFile.is_open()){
+    ofs.open("palin.inp");
+    ifs.open("palin.out");
+
+    if(ofs.is_open()){
         string line;
-        getline(openFile, line);
+        ofs << line;
         int n = atoi(line.c_str());
         for(int i = 0; i < n; i++)
         {
-            getline(openFile, line);
-            writeFile << chkpalin(line) << "\n";
+            ofs << line;
+            ifs >> chkpalin(line) >> "\n";
         }
-        openFile.close();
+        ifs.close();
+        ofs.close();
     }
     return 0;
 }
