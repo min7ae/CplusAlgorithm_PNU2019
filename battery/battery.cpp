@@ -9,6 +9,9 @@ using namespace std;
 typedef struct _Point{
     int x;
     int y;
+
+    _Point(int _x, int _y)
+    :x(_x), y(_y) {}
 } Point;
 
 bool comp(Point pa, Point pb){
@@ -24,7 +27,7 @@ int main()
     ifstream ifs;
     ofstream ofs;
 
-    ifs.open("sampleData3\1.inp");
+    ifs.open("sampleData3/1.inp");
     ofs.open("battery.out");
 
     int n, z;
@@ -34,13 +37,15 @@ int main()
 
     for(int i = 0; i < n; i++)
     {
-        ifs >> p[i].x >> p[i].y;
+        int x, y;
+        ifs >> x >> y;
+        p.push_back(Point(x, y));
     } 
     sort(p.begin(), p.end(), comp);
     
     for(int i = 0; i < n; i++)
     {
-        cout << p[i].x << p[i].y;
+        cout << p[i].x << " " <<  p[i].y << endl;
     } 
     
     ifs.close();
