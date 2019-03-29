@@ -52,14 +52,14 @@ int oil_size( ) {
 
 /* observe(i, j) : Oil[i;j]의 상태 반환 */
 int observe( int i, int j ) {
-
+    printf("observe: %d %d\n", i, j);
     call_num++;
 
     /* 호출 횟수 초과 */
-    if( call_num > call_limit ){
-        printf("%d %d %d", 0, 0, call_num);
-        exit(0);
-    }
+    // if( call_num > call_limit ){
+        // printf("%d %d %d", 0, 0, call_num);
+    //     exit(0);
+    // }
 
     /* 3. index 오류 */
     if( i>j || i<0 || j<0 || i>=Oil_sz || j>=Oil_sz )
@@ -76,7 +76,7 @@ void oil_report( int i, int j ) {
     // 답안 제출시 oil_report(i, j)를 이용해 정답을 출력하십시요.
     // 편의상 console에 출력하도록 되어있지만, 실제로는 파일 입출력을 통해 답안이 출력이 될 예정입니다.
     // oil_report(i,j)를 호출하지 않고, 학생이 직접 파일 입출력을 할 경우 오답 처리 됩니다.
-	if( Oil_beg==i && Oil_end==j ) printf("정답");
+	if( Oil_beg==i && Oil_end==j ) printf("정답%d ", call_num);
 
     printf( "%d %d", i, j );
     exit(0);
